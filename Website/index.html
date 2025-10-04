@@ -129,6 +129,41 @@
     <h1>Welcome to MyGlucoGuide</h1>
     <p>Your smart assistant for predicting and understanding diabetes types.<br>Stay informed, stay healthy.</p>
   </div>
+  <div class="container">
+  <h2>Check Your Diabetes Risk</h2>
+  <form id="predictForm">
+    <label>Age:</label>
+    <input type="number" name="age" required><br><br>
+
+    <label>Gender:</label>
+    <select name="gender">
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+    </select><br><br>
+
+    <label>BMI:</label>
+    <input type="number" step="0.1" name="bmi" required><br><br>
+
+    <label>Insulin:</label>
+    <input type="number" name="insulin" required><br><br>
+
+    <button type="submit">Predict</button>
+  </form>
+  <p id="result"></p>
+</div>
+
+<script>
+  document.getElementById("predictForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    let formData = new FormData(this);
+    let response = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      body: formData
+    });
+    let result = await response.json();
+    document.getElementById("result").innerText = "Prediction: " + result.prediction;
+  });
+</script>
 
 </body>
 </html>
