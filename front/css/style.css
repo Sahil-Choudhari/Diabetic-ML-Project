@@ -5,10 +5,11 @@
   box-sizing: border-box;
 }
 
+/* Body */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #f5f7f8;
+  color: #333;
   min-height: 100vh;
 }
 
@@ -18,11 +19,12 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #1f1f1f;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   z-index: 999;
 }
 
@@ -31,7 +33,7 @@ nav {
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  color: #347474;
 }
 
 .logo-text img {
@@ -47,40 +49,91 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #fff;
+  color: #347474;
   transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  color: #00ffd5;
+  color: #2c7a7b;
 }
 
 /* Container */
 .container {
-  background: rgba(30, 30, 30, 0.9);
+  background: #ffffff;
   padding: 40px;
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
-  max-width: 800px;
+  max-width: 900px;
   width: 90%;
-  margin: 120px auto 0 auto;
+  margin: 120px auto 60px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Headings */
-h1, h2 {
+h1 {
+  color: #347474;
   margin-bottom: 20px;
-  color: #00ffd5;
+}
+
+h2 {
+  color: #4fa3a5;
+  margin-bottom: 15px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Diabetes Info */
+.diabetes-info {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.diabetes-info img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(79, 163, 165, 0.15);
+}
+
+/* Footer */
+footer {
+  background-color: #eef1f2;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 0.95em;
+  color: #666;
+  border-top: 1px solid #ccc;
+}
+
+footer span {
+  color: #e56b6f;
+  font-size: 1.1em;
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
   }
+
   nav ul {
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .diabetes-info {
+    text-align: center;
   }
 }
