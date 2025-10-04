@@ -5,6 +5,157 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <link rel="stylesheet" href="css/style.css">
+  
+  
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7f8;
+      color: #333;
+      min-height: 100vh;
+      padding-top: 80px; /* To avoid overlap with fixed nav */
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #ffffff, #e6f2f2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 0 8px rgba(79, 163, 165, 0.2), 0 0 4px rgba(79, 163, 165, 0.15);
+      border-bottom: 1px solid rgba(79, 163, 165, 0.3);
+      z-index: 999;
+    }
+
+    .logo-text {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #347474;
+    }
+
+    .logo-text img {
+      height: 45px;
+      margin-right: 12px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #347474;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    nav ul li a:hover {
+      background-color: #d7f0f0;
+      color: #2c7a7b;
+    }
+
+    /* Container */
+    .container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      margin: 0 auto 60px auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    h1 {
+      color: #347474;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    /* Form Styles */
+    form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #4fa3a5;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1.5px solid #cbd6d6;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #347474;
+      outline: none;
+      box-shadow: 0 0 8px rgba(52, 116, 116, 0.3);
+    }
+
+    button[type="submit"] {
+      background-color: #347474;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2c7a7b;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+    }
+  </style>
+
+
 </head>
 <body>
 
@@ -16,8 +167,8 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="prediction.html">Prediction</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="prediction.html">Prection</a></li>
     </ul>
   </nav>
 
