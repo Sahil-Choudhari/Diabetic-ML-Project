@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyGlucoGuide - Home</title>
+    <link rel="icon" type="image/x-icon" href="../static/images/weblogo.png" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo-text">
+        <img src="../static/images/weblogo.png" alt="Logo" /> MyGlucoGuide
+      </div>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('prediction') }}">Prediction</a></li>
+      </ul>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+      <h1>Welcome to MyGlucoGuide</h1>
+      <p>
+        Your smart assistant for predicting and understanding diabetes types.<br />
+        Stay informed, stay healthy.
+      </p>
+
+      <div class="diabetes-info">
+        <h2>What is Diabetes?</h2>
+        <p>
+          Diabetes is a chronic health condition that affects how your body
+          turns food into energy. There are mainly two types:
+          <strong>Type 1</strong> and <strong>Type 2</strong> diabetes. Early
+          detection and management are crucial for living a healthy life.
+        </p>
+
+        <img src="images/diabetes-awareness.jpg" alt="Diabetes Awareness" />
+
+        <p>
+          MyGlucoGuide helps you understand your risk levels and make informed
+          lifestyle choices through AI-powered predictions.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-start p-0 gap-[10px]">
+      <div
+        class="hero-timer-medium-preheadline text-sm font-primaryBold text-secondary tracking-[0.175rem] uppercase"
+      >
+        About Diabetes
+      </div>
+      <h1 class="hero-timer-medium-headline">Understanding Type 1 Diabetes</h1>
+      <div class="hero-timer-medium-desc text-lg text-body">
+        <p>
+          Type 1 diabetes is an autoimmune disease. Testing, coupled with
+          education about diabetes symptoms and close follow-up, has been shown
+          to enable earlier diagnosis and to prevent diabetes ketoacidosis.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 MyGlucoGuide. Made with <span>&#10084;</span> for your
+        health and well-being.
+      </p>
+      <p>All rights reserved.</p>
+    </footer>
+  </body>
+</html>

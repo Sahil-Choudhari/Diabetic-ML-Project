@@ -4,12 +4,21 @@ import numpy as np
 
 app = Flask(__name__)
 
+try:
 # Load ML models
-with open("models/diabetes_model.pkl", "rb") as f:
-    diabetes_model = pickle.load(f)
+    with open("models/diabetes_model.pkl", "rb") as f:
+    
+        diabetes_model = pickle.load(f)
+except:
+        pass    
 
-with open("models/diabetes_type_model.pkl", "rb") as f:
-    type_model = pickle.load(f)
+try:
+    with open("models/diabetes_type_model.pkl", "rb") as f:
+    
+        type_model = pickle.load(f)
+except:
+        pass    
+    
 
 # ---- Routes for Pages ----
 @app.route("/")
@@ -35,6 +44,7 @@ def predict():
     gender = int(request.form["gender"])
     bmi = float(request.form["bmi"])
     insulin = float(request.form["insulin"])
+    
 
     X = np.array([[age, gender, bmi, insulin]])
     result = diabetes_model.predict(X)[0]

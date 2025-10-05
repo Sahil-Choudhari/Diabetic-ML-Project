@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
-  <link rel="stylesheet" href="css/style.css">
-  
-  
+  <title>Contact Us | MyGlucoGuide</title>
+  <link rel="icon" type="image/x-icon" href="../static/images/weblogo.png">
+  <link rel="stylesheet" href="../static/css/style.css">
+
   <style>
     /* Reset */
     * {
@@ -20,7 +20,7 @@
       background-color: #f5f7f8;
       color: #333;
       min-height: 100vh;
-      padding-top: 80px; /* To avoid overlap with fixed nav */
+      padding-top: 80px;
     }
 
     /* Navbar */
@@ -143,6 +143,32 @@
       background-color: #2c7a7b;
     }
 
+    /* Social Media Icons */
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.15);
+    }
+
+    .social-links svg {
+      width: 30px;
+      height: 30px;
+      fill: #347474;
+      transition: fill 0.3s ease;
+    }
+
+    .social-links a:hover svg {
+      fill: #2c7a7b;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .container {
@@ -154,42 +180,68 @@
       }
     }
   </style>
-
-
 </head>
+
 <body>
 
   <!-- Navbar -->
   <nav>
     <div class="logo-text">
-      <img src="images/weblogo.png" alt="Logo"> MyGlucoGuide
+      <img src="../static/images/weblogo.png" alt="Logo"> MyGlucoGuide
     </div>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="prediction.html">Prection</a></li>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('prediction') }}">Prediction</a></li>
     </ul>
   </nav>
 
   <!-- Content -->
   <div class="container">
     <h1>Contact Us</h1>
-    <p>Have questions or feedback? Reach out to us.</p>
+    <p>Have questions or feedback? We’d love to hear from you. Fill out the form below or connect with us on social media.</p>
 
-    <form>
-      <label>Name:</label><br>
-      <input type="text" required><br><br>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input id="name" type="text" required>
 
-      <label>Email:</label><br>
-      <input type="email" required><br><br>
+      <label for="email">Email:</label>
+      <input id="email" type="email" required>
 
-      <label>Message:</label><br>
-      <textarea rows="5" required></textarea><br><br>
+      <label for="message">Message:</label>
+      <textarea id="message" rows="5" required></textarea>
 
       <button type="submit">Send</button>
     </form>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com" target="_blank" title="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm4.5 3.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2A3 3 0 1 0 12 16a3 3 0 0 0 0-6zm4.75-.9a.85.85 0 1 1 0 1.7.85.85 0 0 1 0-1.7z"/></svg>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" title="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.14 8.44 9.93v-7.03H8.1v-2.9h2.34v-2.2c0-2.32 1.38-3.6 3.5-3.6.7 0 1.46.12 2.1.24v2.32h-1.18c-1.15 0-1.5.72-1.5 1.46v1.78h2.55l-.41 2.9h-2.14v7.03C18.34 21.2 22 17.06 22 12.07z"/></svg>
+      </a>
+      <a href="https://x.com" target="_blank" title="X (Twitter)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.36 2H21l-4.8 5.47L22 22h-5.3l-3.9-6.2L8.1 22H2l5.6-6.36L2 2h5.3l3.6 5.84L18.36 2zM7.8 4L18 20h1.1L8.9 4H7.8z"/></svg>
+      </a>
+    </div>
   </div>
+
+  <!-- Simple JS for popup -->
+  <script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent actual form submission
+    
+    const userName = document.getElementById('name').value.trim();
+    const displayName = userName ? userName : "there"; // fallback if empty
+    
+    alert(`✅ Thank you ${displayName}, for connecting with us! We appreciate your response.`);
+    
+    this.reset(); // Clears the form after showing alert
+  });
+</script>
+
 
 </body>
 </html>

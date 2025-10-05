@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <link rel="icon" type="image/x-icon" href="../static/images/weblogo.png">
+  <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+    /* --- FORM SECTION --- */
+#predictForm {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#predictForm label {
+  display: block;
+  font-weight: 600;
+  color: #347474;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+/* Full-width inputs, selects, and buttons */
+#predictForm input[type="number"],
+#predictForm select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #c9e6e6;
+  border-radius: 8px;
+  background-color: #f9fdfd;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focused input state */
+#predictForm input:focus,
+#predictForm select:focus {
+  border-color: #4fa3a5;
+  box-shadow: 0 0 6px rgba(79, 163, 165, 0.25);
+  outline: none;
+}
+
+/* Submit Button */
+#predictForm button[type="submit"] {
+  width: 100%;
+  padding: 14px 0;
+  background: linear-gradient(to right, #347474, #4fa3a5);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+#predictForm button[type="submit"]:hover {
+  background: linear-gradient(to right, #2c7a7b, #479b9d);
+  transform: translateY(-2px);
+}
+
+#predictForm button[type="submit"]:active {
+  transform: translateY(0);
+  background: linear-gradient(to right, #2f6666, #3b8a8b);
+}
+
+/* Prediction Result */
+#result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e6f2f2;
+  border-radius: 8px;
+  color: #347474;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 6px rgba(79, 163, 165, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #predictForm input,
+  #predictForm select,
+  #predictForm button {
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+      <img src="../static/images/weblogo.png" alt="Logo"> MyGlucoGuide
+    </div>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('prediction') }}">Prediction</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+  <h1>Check Your Diabetes Risk</h1>
+  <form id="predictForm">
+    <label>Age:</label><br>
+    <input type="number" name="age" required><br><br>
+
+    <label>Gender:</label><br>
+    <select name="gender">
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+    </select><br><br>
+
+    <label>BMI:</label><br>
+    <input type="number" step="0.1" name="bmi" required><br><br>
+
+    <label>Insulin:</label><br>
+    <input type="number" name="insulin" required><br><br>
+
+    <button type="submit">Predict</button>
+  </form>
+  <p id="result"></p>
+</div>
+
+<script>
+document.getElementById("predictForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  let formData = new FormData(this);
+  let response = await fetch("{{ url_for('predict') }}", {
+    method: "POST",
+    body: formData
+  });
+  let result = await response.json();
+  document.getElementById("result").innerText = "Prediction: " + result.prediction + 
+    (result.type ? " (" + result.type + ")" : "");
+});
+</script>
+
+</body>
+</html>
